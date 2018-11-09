@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7F5C3291-222C-446F-AA13-99FC5813496F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Appeon.SnapDevelop.SvnServices</RootNamespace>
+    <AssemblyName>Appeon.SnapDevelop.SvnServices</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>appeon.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SharpSvn, Version=1.9007.3987.251, Culture=neutral, PublicKeyToken=d729672594885a28, processorArchitecture=x86">
+      <HintPath>..\..\..\packages\SharpSvn.1.9-x86.1.9007.3987.251\lib\net40\SharpSvn.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpSvn.UI, Version=1.9007.3987.251, Culture=neutral, PublicKeyToken=33789aa53ca44aa9, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SharpSvn.1.9-x86.1.9007.3987.251\lib\net40\SharpSvn.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Adapters\SvnCommandArgs.cs" />
+    <Compile Include="Adapters\SvnExecuteResult.cs" />
+    <Compile Include="Commands\ShowCheckoutCommand.cs" />
+    <Compile Include="Commands\ShowExportCommand.cs" />
+    <Compile Include="IFileOperation.cs" />
+    <Compile Include="Commands\CreatePatchCommand.cs" />
+    <Compile Include="Commands\ApplyPatchCommand.cs" />
+    <Compile Include="Commands\CommitCommand.cs" />
+    <Compile Include="Commands\AddCommand.cs" />
+    <Compile Include="Commands\IgnoreCommand.cs" />
+    <Compile Include="Commands\LockCommand.cs" />
+    <Compile Include="Commands\BlameCommand.cs" />
+    <Compile Include="Commands\UnignoreCommand.cs" />
+    <Compile Include="Commands\HelpCommand.cs" />
+    <Compile Include="Commands\SettingsCommand.cs" />
+    <Compile Include="Commands\AboutCommand.cs" />
+    <Compile Include="Commands\DiffCommand.cs" />
+    <Compile Include="Commands\RevertCommand.cs" />
+    <Compile Include="Commands\RelocateCommand.cs" />
+    <Compile Include="Commands\ExportWorkingCopyCommand.cs" />
+    <Compile Include="Commands\ShowLogCommand.cs" />
+    <Compile Include="Commands\ResolveConflictsCommand.cs" />
+    <Compile Include="Commands\EditConflictsCommand.cs" />
+    <Compile Include="Commands\MergeCommand.cs" />
+    <Compile Include="Commands\SwitchCommand.cs" />
+    <Compile Include="Commands\BranchCommand.cs" />
+    <Compile Include="Commands\RevisionGraphCommand.cs" />
+    <Compile Include="Commands\RepoStatusCommand.cs" />
+    <Compile Include="Commands\RepoBrowserCommand.cs" />
+    <Compile Include="Commands\CleanupCommand.cs" />
+    <Compile Include="Commands\UpdateToRevisionCommand.cs" />
+    <Compile Include="Commands\UpdateCommand.cs" />
+    <Compile Include="Commands\SubversionCommand.cs" />
+    <Compile Include="Impl\SvnFileOperation.cs" />
+    <Compile Include="Enum\StatusKind.cs" />
+    <Compile Include="Enum\Recurse.cs" />
+    <Compile Include="Enum\KnownError.cs" />
+    <Compile Include="Impl\ChangedPath.cs" />
+    <Compile Include="Impl\SvnService.cs" />
+    <Compile Include="Impl\SvnExternalWrapper.cs" />
+    <Compile Include="Impl\SvnMessageView.cs" />
+    <Compile Include="Impl\NotificationEventArgs.cs" />
+    <Compile Include="Impl\SubversionOperationEventArgs.cs" />
+    <Compile Include="Impl\LogMessage.cs" />
+    <Compile Include="Impl\Revision.cs" />
+    <Compile Include="Impl\Status.cs" />
+    <Compile Include="Impl\SvnClientException.cs" />
+    <Compile Include="Impl\SvnClientWrapper.cs" />
+    <Compile Include="ISvnCommand.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Adapters\SvnFileRenamingArgs.cs" />
+    <Compile Include="Adapters\SvnFileRenameArgs.cs" />
+    <Compile Include="Adapters\SvnFileCancelArgs.cs" />
+    <Compile Include="Adapters\SvnFileArgs.cs" />
+    <Compile Include="Utils\FileUtility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="appeon.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Appeon.SnapDevelop.VersionControlServices\Appeon.SnapDevelop.VersionControlServices.csproj">
+      <Project>{5d8fe672-effb-423f-a423-8eeff5806928}</Project>
+      <Name>Appeon.SnapDevelop.VersionControlServices</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

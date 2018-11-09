@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appeon.ShapDevelop", "Appeon.ShapDevelop\Appeon.ShapDevelop.csproj", "{0C9640D8-C373-44C6-895E-FADB367D9368}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C9640D8-C373-44C6-895E-FADB367D9368}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C9640D8-C373-44C6-895E-FADB367D9368}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C9640D8-C373-44C6-895E-FADB367D9368}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C9640D8-C373-44C6-895E-FADB367D9368}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {72203F88-60AD-46E9-9ED5-A86AEE8DBE44}
+	EndGlobalSection
+EndGlobal
