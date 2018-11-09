@@ -14,12 +14,17 @@ namespace Appeon.ShapDevelop
             using (var repo = new Repository(path))
             {
                 Console.WriteLine(repo.Index.Count);
-                repo.Index.Add("Appeon.SnapDevelop.GitServices/Commands/AddCommand.cs");
-                Console.WriteLine(repo.Index.Count);
-                repo.Index.Write();
-                Console.WriteLine(repo.Index.Count);
+                //repo.Index.Add("Appeon.SnapDevelop.GitServices/Commands/CloneCommand.cs");
+                //Console.WriteLine(repo.Index.Count);
+                //repo.Index.Write();
+                //Console.WriteLine(repo.Index.Count);
                 Commands.Stage(repo, "*");
                 Console.WriteLine(repo.Index.Count);
+
+                foreach(var i in repo.Index)
+                {
+                    Console.WriteLine(i);
+                }
             }
         }
 
