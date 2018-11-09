@@ -45,6 +45,7 @@
     <Compile Include="Adapters\GitCommandArgs.cs" />
     <Compile Include="Adapters\GitExecuteResult.cs" />
     <Compile Include="Adapters\GitFileArgs.cs" />
+    <Compile Include="Commands\AddCommand.cs" />
     <Compile Include="Commands\GitCommand.cs" />
     <Compile Include="Impl\GitWrapper.cs" />
     <Compile Include="IGitCommand.cs" />

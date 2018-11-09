@@ -71,6 +71,8 @@ namespace Appeon.SnapDevelop.GitServices
 
         public GitExecuteResult Init(GitFileArgs args, MethodInvoker action)
         {
+           
+
             throw new NotImplementedException();
         }
 
