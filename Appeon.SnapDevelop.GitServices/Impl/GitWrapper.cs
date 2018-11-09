@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Appeon.SnapDevelop.GitServices
 {
@@ -28,6 +25,56 @@ namespace Appeon.SnapDevelop.GitServices
         public void Dispose()
         {
             Dispose(true);
+        }
+
+        public GitExecuteResult Add(GitFileArgs args, MethodInvoker action)
+        {
+            throw new NotImplementedException();
+        }
+
+        public GitExecuteResult Branch(GitFileArgs args, MethodInvoker action)
+        {
+            throw new NotImplementedException();
+        }
+
+        public GitExecuteResult Checkout(GitFileArgs args, MethodInvoker action)
+        {
+            throw new NotImplementedException();
+        }
+
+        public GitExecuteResult Clone(GitFileArgs args, MethodInvoker action)
+        {
+            throw new NotImplementedException();
+        }
+
+        public GitExecuteResult Commit(GitFileArgs args, MethodInvoker action)
+        {
+            throw new NotImplementedException();
+        }
+
+        public GitExecuteResult CommitTree(GitFileArgs args, MethodInvoker action)
+        {
+            throw new NotImplementedException();
+        }
+
+        public GitExecuteResult Diff(GitFileArgs args, MethodInvoker action)
+        {
+            throw new NotImplementedException();
+        }
+
+        public GitExecuteResult Fetch(GitFileArgs args, MethodInvoker action)
+        {
+            throw new NotImplementedException();
+        }
+
+        public GitExecuteResult Init(GitFileArgs args, MethodInvoker action)
+        {
+            throw new NotImplementedException();
+        }
+
+        public GitExecuteResult Log(GitFileArgs args, MethodInvoker action)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
