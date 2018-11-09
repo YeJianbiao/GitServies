@@ -6,13 +6,7 @@ using System.Threading.Tasks;
 
 namespace Appeon.SnapDevelop.GitServices.Commands
 {
-    public class CloneCommand:GitCommand
+    class BranchCommand
     {
-
-        public override void Run(GitFileArgs args)
-        {
-            base.Command.Clone(args,null);
-        }
-
     }
 }

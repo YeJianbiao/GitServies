@@ -13,24 +13,25 @@ namespace Appeon.ShapDevelop
         {
             using (var repo = new Repository(path))
             {
-                Console.WriteLine(repo.Index.Count);
-                //repo.Index.Add("Appeon.SnapDevelop.GitServices/Commands/CloneCommand.cs");
-                //Console.WriteLine(repo.Index.Count);
-                //repo.Index.Write();
-                //Console.WriteLine(repo.Index.Count);
-                Commands.Stage(repo, "*");
-                Console.WriteLine(repo.Index.Count);
-
-                foreach(var i in repo.Index)
+                foreach (var branch in repo.Branches)
                 {
-                    Console.WriteLine(i);
+                    Console.WriteLine(branch);
                 }
             }
+            Console.ReadKey();
         }
 
         void Add()
         {
+            using (var repo = new Repository(path))
+            {
+                //暂存单个文件的添加，一般执行后就会有右键git菜单（提交|撤销）
+                repo.Index.Add("Appeon.SnapDevelop.GitServices/Commands/CloneCommand.cs");
+                repo.Index.Write();
 
+                //暂存当前目录下的所有文件，参数表示过滤，*代表全部
+                Commands.Stage(repo, "*");
+            }
         }
 
         void GetConfig()
