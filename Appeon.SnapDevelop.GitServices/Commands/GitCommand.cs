@@ -8,8 +8,6 @@ namespace Appeon.SnapDevelop.GitServices
         {
             get
             {
-
-
                 return new GitWrapper();
             }
         }

@@ -25,5 +25,15 @@ namespace Appeon.SnapDevelop.GitServices
 
         GitExecuteResult Log(GitFileArgs args, MethodInvoker action);
 
+        GitExecuteResult Merge(GitFileArgs args, MethodInvoker action);
+
+        GitExecuteResult Revert(GitFileArgs args, MethodInvoker action);
+
+        GitExecuteResult Ignore(GitFileArgs args, MethodInvoker action);
+
+        GitExecuteResult Unignore(GitFileArgs args, MethodInvoker action);
+
+        GitExecuteResult Remove(GitFileArgs args, MethodInvoker action);
+
     }
 }
