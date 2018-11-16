@@ -40,7 +40,15 @@ namespace Appeon.SnapDevelop.GitServices.Impl
 
         protected static void OnFileChanged(object sender, FileSystemEventArgs args)
         {
-
+            if (Cache.UncommitChanges.Contains(args.FullPath))
+            {
+                return;
+            }
+            lock (Cache.FileChanges)
+            {
+                Cache.FileChanges.Enqueue(args.FullPath);
+                GitStatus.Reset();
+            }
 
         }
 

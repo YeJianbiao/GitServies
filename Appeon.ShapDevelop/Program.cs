@@ -12,12 +12,10 @@ namespace Appeon.ShapDevelop
         static void Main(string[] args)
         {
 
+            //Import.ImportProjectToGithub();
 
-            Import.ImportProjectToGithub();
-
-            //FileWatcher.Start();
-            //Console.ReadKey();
+            Console.ReadKey();
         }
-        
+
     }
 }
