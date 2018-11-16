@@ -1,21 +1,15 @@
-﻿using Appeon.ShapDevelop.Func;
-using Appeon.ShapDevelop.Helper;
-using Appeon.ShapDevelop.Util;
-using LibGit2Sharp;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Appeon.ShapDevelop
 {
     class Program
     {
-               
         static void Main(string[] args)
         {
-
-            //Import.ImportProjectToGithub();
-
-            Console.ReadKey();
         }
-
     }
 }
