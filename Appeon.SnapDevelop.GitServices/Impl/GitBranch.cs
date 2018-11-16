@@ -1,5 +1,4 @@
 ﻿using LibGit2Sharp;
-using System;
 using System.Linq;
 
 namespace Appeon.SnapDevelop.GitServices.Impl
@@ -7,20 +6,53 @@ namespace Appeon.SnapDevelop.GitServices.Impl
     internal class GitBranch:GitBase
     {
 
-        internal static bool CreateBranch(string rootPath,string name)
+        internal static bool CreateBranch(string name)
         {
-            using (var repo = new Repository(rootPath, new RepositoryOptions { Identity = GitConstants.Identity }))
+            using (var repo = new Repository(GitConstants.ProjectPath, new RepositoryOptions { Identity = GitConstants.Identity }))
             {
                 EnableRefLog(repo);
 
-                const string committish = "be3563ae3f795b2b4353bcce3a527ad0a4f7f644";
-
-                Branch newBranch = repo.CreateBranch(name, committish);
-                if (newBranch==null||!name.Equals(newBranch.FriendlyName)|| !("refs/heads/" + name).Equals(newBranch.CanonicalName)|| newBranch.Tip==null|| committish.Equals(newBranch.Tip.Sha)|| repo.Branches.SingleOrDefault(p => p.FriendlyName.Normalize() == name)==null)
+                Branch newBranch = repo.CreateBranch(name);
+                if (newBranch==null||!name.Equals(newBranch.FriendlyName)|| !("refs/heads/" + name).Equals(newBranch.CanonicalName)|| newBranch.Tip==null|| repo.Branches.SingleOrDefault(p => p.FriendlyName.Normalize() == name)==null)
                 {
                     return false;
                 }
 
+            }
+            return true;
+        }
+
+
+        public bool SetDefaultRemote(string branch)
+        {
+            if (string.IsNullOrEmpty(GitConstants.ProjectPath))
+            {
+                return false;
+            }
+            using (var repo = new Repository(GitConstants.ProjectPath))
+            {
+                if (repo.Network.Remotes.Count() != 1)
+                {
+                    return false;
+                }
+                var remote = repo.Network.Remotes.SingleOrDefault();
+                repo.Branches.Update(repo.Branches[branch], b => b.Remote = remote.Name,
+                    b => b.UpstreamBranch = repo.Head.CanonicalName);
+            }
+            return true;
+        }
+
+        public bool SetRemote(string branch,string remotename)
+        {
+            if (string.IsNullOrEmpty(GitConstants.ProjectPath))
+            {
+                return false;
+            }
+            using (var repo = new Repository(GitConstants.ProjectPath))
+            {
+                var remote = repo.Network.Remotes.SingleOrDefault(o => o.Name == remotename);
+                repo.Branches.Update(repo.Branches[branch], b => b.Remote = remote.Name,
+                    b => b.UpstreamBranch = repo.Head.CanonicalName);
             }
             return true;
         }

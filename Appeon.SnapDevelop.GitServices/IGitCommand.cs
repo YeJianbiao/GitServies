@@ -5,6 +5,8 @@ namespace Appeon.SnapDevelop.GitServices
     public interface IGitCommand
     {
 
+        GitExecuteResult AddSloutionToSubversion(GitFileArgs args, MethodInvoker action);
+
         GitExecuteResult Add(GitFileArgs args, MethodInvoker action);
 
         GitExecuteResult Branch(GitFileArgs args, MethodInvoker action);

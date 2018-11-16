@@ -58,7 +58,7 @@ namespace Appeon.SnapDevelop.GitServices
         {
             try
             {
-                bool flag = GitBranch.CreateBranch(args.RootPath,"Branch");
+                bool flag = GitBranch.CreateBranch("Branch");
                 if (flag)
                 {
                     return new GitExecuteResult() {IsSuccess = true };
@@ -84,7 +84,7 @@ namespace Appeon.SnapDevelop.GitServices
         {
             try
             {
-                bool flag = GitCheckout.CheckoutBranch(args.RootPath, "Branch");
+                bool flag = GitCheckout.CheckoutBranch("Branch");
                 if (flag)
                 {
                     return new GitExecuteResult() { IsSuccess = true };
@@ -136,15 +136,8 @@ namespace Appeon.SnapDevelop.GitServices
         {
             try
             {
-                bool flag = GitCommit.Commit("");
-                if (flag)
-                {
-                    return new GitExecuteResult() { IsSuccess = true };
-                }
-                else
-                {
-                    return new GitExecuteResult() { IsSuccess = false, Message = "" };
-                }
+                new GitCommit().Commit("");
+                return new GitExecuteResult() { IsSuccess = true };
             }
             catch (Exception ex)
             {
@@ -213,6 +206,11 @@ namespace Appeon.SnapDevelop.GitServices
         }
 
         public GitExecuteResult Remove(GitFileArgs args, MethodInvoker action)
+        {
+            throw new NotImplementedException();
+        }
+
+        public GitExecuteResult AddSloutionToSubversion(GitFileArgs args, MethodInvoker action)
         {
             throw new NotImplementedException();
         }

@@ -2,6 +2,8 @@
 using LibGit2Sharp.Handlers;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Appeon.ShapDevelop.Helper
@@ -11,25 +13,26 @@ namespace Appeon.ShapDevelop.Helper
 
         public static bool ImportProjectToGithub()
         {
-
-            string remoteRepoPath = Repository.Init("ApponTest", true);
-
-            // Create a new repository
-            string localRepoPath = Repository.Init(Config.ProjectPath, false);
-            using (var localRepo = new Repository(localRepoPath, new RepositoryOptions { Identity = Config.Identity }))
+            CopyGitignore();
+            CopyGitattributes();
+            //string localRepoPath = Repository.Clone(Config.RemotePath, Config.ProjectPath);
+            //string localRepoPath = Repository.Init(Config.ProjectPath, false);
+            using (var localRepo = new Repository(Config.ProjectPath, new RepositoryOptions { Identity = Config.Identity }))
             {
-                Commands.Stage(localRepo,"*", new StageOptions { ExplicitPathsOptions = new ExplicitPathsOptions { ShouldFailOnUnmatchedPath = false } });
+                //Remote remote = localRepo.Network.Remotes.Add("origin", Config.RemotePath);
 
-                Commit first= localRepo.Commit("New commit", Config.Signature, Config.Signature);
-                
-                Remote remote = localRepo.Network.Remotes.Add("origin", remoteRepoPath);
+                Commands.Stage(localRepo,"*");
+                localRepo.Commit("commit", Config.Signature, Config.Signature);
 
-                localRepo.Branches.Update(localRepo.Head,
-                    b => b.Remote = remote.Name,
-                    b => b.UpstreamBranch = localRepo.Head.CanonicalName);
 
-                // Push this commit
-                localRepo.Network.Push(localRepo.Head);
+                //localRepo.Branches.Update(localRepo.Head,
+                //    b => b.Remote = remote.Name,
+                //    b => b.UpstreamBranch = localRepo.Head.CanonicalName);
+
+                var options = new PushOptions();
+                options.CredentialsProvider = (_url, _user, _cred) =>
+                    new UsernamePasswordCredentials { Username = "admin", Password = "admin123" };
+                localRepo.Network.Push(localRepo.Head, options);
                 //AssertRemoteHeadTipEquals(localRepo, first.Sha);
 
                 //UpdateTheRemoteRepositoryWithANewCommit(remoteRepoPath);
@@ -59,9 +62,25 @@ namespace Appeon.ShapDevelop.Helper
             return true;
         }
 
-        
+        private static void CopyGitignore()
+        {
+            string sourceFile = Path.Combine(Environment.CurrentDirectory, ".gitignore");
+            string destinationFile = Path.Combine(Config.ProjectPath, ".gitignore");
+            if (!File.Exists(destinationFile)&&File.Exists(sourceFile))
+            {
+                File.Copy(sourceFile, destinationFile);
+            }
+        }
 
-
+        private static void CopyGitattributes()
+        {
+            string sourceFile = Path.Combine(Environment.CurrentDirectory, ".gitattributes");
+            string destinationFile = Path.Combine(Config.ProjectPath, ".gitattributes");
+            if (!File.Exists(destinationFile) && File.Exists(sourceFile))
+            {
+                File.Copy(sourceFile, destinationFile, false);
+            }
+        }
 
     }
 }

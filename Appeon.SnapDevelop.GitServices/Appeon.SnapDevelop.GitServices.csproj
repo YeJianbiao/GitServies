@@ -57,9 +57,8 @@
     <Compile Include="Commands\CloneCommand.cs" />
     <Compile Include="Commands\CommitCommand.cs" />
     <Compile Include="Commands\GitCommand.cs" />
-    <Compile Include="Helpers\DirectoryHelper.cs" />
-    <Compile Include="Helpers\IPostTestDirectoryRemover.cs" />
-    <Compile Include="Helpers\SelfCleaningDirectory.cs" />
+    <Compile Include="Impl\Cache.cs" />
+    <Compile Include="Impl\FileWatcher.cs" />
     <Compile Include="Impl\GitBase.cs" />
     <Compile Include="Impl\GitCheckout.cs" />
     <Compile Include="Impl\GitClone.cs" />
@@ -68,13 +67,16 @@
     <Compile Include="Impl\GitAdd.cs" />
     <Compile Include="Impl\GitBranch.cs" />
     <Compile Include="Impl\GitFetch.cs" />
+    <Compile Include="Impl\GitFileHistory.cs" />
     <Compile Include="Impl\GitLog.cs" />
     <Compile Include="Impl\GitPull.cs" />
     <Compile Include="Impl\GitPush.cs" />
+    <Compile Include="Impl\GitRemote.cs" />
+    <Compile Include="Impl\GitSetting.cs" />
+    <Compile Include="Impl\GitStatus.cs" />
     <Compile Include="Impl\GitWrapper.cs" />
     <Compile Include="IGitCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test\Push.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -85,6 +87,15 @@
       <Name>Appeon.SnapDevelop.VersionControlServices</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitattributes">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include=".gitignore">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

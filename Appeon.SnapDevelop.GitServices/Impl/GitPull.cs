@@ -1,15 +1,16 @@
 ﻿using LibGit2Sharp;
 using LibGit2Sharp.Handlers;
 using System;
+using System.Linq;
 
 namespace Appeon.SnapDevelop.GitServices.Impl
 {
     internal class GitPull
     {
 
-        public void Pull()
+        private void DoPull()
         {
-            using (var repo = new Repository(GitConstants.GitRootPath))
+            using (var repo = new Repository(GitConstants.ProjectPath))
             {
                 var options = new PullOptions
                 {
@@ -18,7 +19,7 @@ namespace Appeon.SnapDevelop.GitServices.Impl
                         CredentialsProvider = new CredentialsHandler((url, usernameFromUrl, types) =>
                         new UsernamePasswordCredentials()
                         {
-                            Username = GitConstants.User,
+                            Username = GitConstants.Account,
                             Password = GitConstants.Password
                         })
                     }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Appeon.SnapDevelop.GitServices.Test
+namespace Appeon.SnapDevelop.GitServices.Impl
 {
-    public class Push
+    internal class GitStatus
     {
 
 

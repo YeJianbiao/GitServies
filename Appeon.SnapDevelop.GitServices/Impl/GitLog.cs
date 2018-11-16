@@ -9,9 +9,8 @@ namespace Appeon.SnapDevelop.GitServices.Impl
 
         public void GetLog()
         {
-            using (var repo = new Repository(GitConstants.GitRootPath))
+            using (var repo = new Repository(GitConstants.ProjectPath))
             {
-
                 foreach (Commit c in repo.Commits)
                 {
                     Console.WriteLine(string.Format("commit {0}", c.Id));

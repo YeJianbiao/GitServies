@@ -9,13 +9,13 @@ namespace Appeon.ShapDevelop
     {
 
 
-        public const string RemotePath = "https://github.com/YeJianbiao/AppeonTest";
+        public const string RemotePath = "http://admin@172.16.6.150:8089/r/TestApp.git";
 
-        public const string ProjectPath = @"C:\Code\Appeon\TestCode\TestApp";
+        public const string ProjectPath = @"E:\GithubTest\ConsoleApp";
 
-        public const string UserName = "yejianbiao";
+        public const string UserName = "admin";
 
-        public const string Password = "kfwgisfi168";
+        public const string Password = "admin123";
 
         public const string Email = "yejianbiao@163.com";
 
